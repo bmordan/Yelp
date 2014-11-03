@@ -6,6 +6,16 @@
     <h2><%= link_to content_tag(:i, nil, :class => "fa fa-pencil"), edit_restaurant_path(restaurant) %></h2>
     <h2><%= link_to 'edit', edit_restaurant_path(restaurant) %></h2>
     <h2><%= link_to 'delete', restaurant_path(restaurant), method: :delete %></h2>
+    <h2><%= link_to "Review #{restaurant.name}", new_restaurant_reviews_path(restaurant) %></h2>
+    
+    <% if restaurant.reviews.any? %>
+      <ul> 
+        <% restaurant.reviews.each do |review|%>
+        <li><%= review.thoughts %> <%= review.rating %></li>
+        <% end %>
+      </ul>  
+    <% end %>
+    
   </li>  
   <% end %>
 </ul>  
