@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rspec-rails', group: :test
 gem 'capybara', group: :test
+gem 'launchy', group: :test
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
