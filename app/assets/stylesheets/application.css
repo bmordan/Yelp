@@ -13,7 +13,39 @@
  *= require_tree .
  *= require_self
  */
+a{text-decoration: none;color:rgba(0,0,0,0.8);}
+img{max-width: 100%;}
 body{
-  padding: 12%;
   font-family: 'Goudy Bookletter 1911', serif;
+  background-color: rgba(190,220,220,0.6);
+  padding: 3%;
+}
+header{
+  background-image: url('sushi.jpg');
+  height: 15em;
+  padding:2em;
+}
+main{
+  background-color: rgb(255,255,255);
+  border: solid 7px;
+  border-color: rgba(190,220,220,1);
+  border-radius: 5px;
+  padding: 4% 0% 4% 6%;
+  margin-top: 2%;
+}
+label{
+  display: block;
+}
+input{
+  font-size: 2em;
+  padding: 0.2em;
+}
+input[type=submit]{
+  font-size: 1em;
+  padding: 2%;
+  border-radius: 5px;
+  display: block;
+  margin: 3% 0% 0% 0%;
+  background-color: rgba(0,0,0,0.8);
+  color: rgba(255,255,255,0.8);
 }

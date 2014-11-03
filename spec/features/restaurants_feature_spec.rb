@@ -32,12 +32,20 @@ describe 'restaurants' do
 
     it 'whoops edit a restaurant' do
       visit restaurants_path
-      click_link 'edit KFC'
+      click_link 'edit'
+      #find(".fa-pencil").click
       fill_in 'Name', with: 'Kentucky Fried Chicken'
       click_button 'Update Restaurant'
       expect(page).to have_content 'Kentucky Fried Chicken'
       expect(current_path).to eq '/restaurants'
-    end  
+    end
+
+    it 'remove that restaurant' do
+      visit restaurants_path
+      click_link 'delete'
+      expect(page).not_to have_content 'KFC'
+      expect(page).to have_content 'deleted sucessfully'
+    end 
   end
 
   context 'doing more shit in restaurants' do

@@ -1,8 +1,14 @@
 <% if @restaurants.any? %>
+<ul>
   <% @restaurants.each do |restaurant| %>
+  <li>
     <h2><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></h2>
-    <h2><%= link_to "edit #{restaurant.name}", edit_restaurant_path(restaurant) %></h2>
+    <h2><%= link_to content_tag(:i, nil, :class => "fa fa-pencil"), edit_restaurant_path(restaurant) %></h2>
+    <h2><%= link_to 'edit', edit_restaurant_path(restaurant) %></h2>
+    <h2><%= link_to 'delete', restaurant_path(restaurant), method: :delete %></h2>
+  </li>  
   <% end %>
+</ul>  
 <% else %>
   No restaurants
 <% end %>

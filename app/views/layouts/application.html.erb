@@ -9,8 +9,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+<header>
+  <h1>Rate a Restaurant</h1>
+  <% if flash[:notice] %>
+    <h1><%= flash[:notice] %></h1>
+  <% end %>
+</header>
+<main><%= yield %></main>
 
 </body>
 </html>
