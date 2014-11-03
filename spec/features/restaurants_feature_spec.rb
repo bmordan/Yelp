@@ -29,16 +29,25 @@ describe 'restaurants' do
       expect(page).to have_content 'KFC'
       expect(current_path).to eq '/restaurants'
     end
+
+    it 'whoops edit a restaurant' do
+      visit restaurants_path
+      click_link 'edit KFC'
+      fill_in 'Name', with: 'Kentucky Fried Chicken'
+      click_button 'Update Restaurant'
+      expect(page).to have_content 'Kentucky Fried Chicken'
+      expect(current_path).to eq '/restaurants'
+    end  
   end
 
-  context 'viewing restaurants' do
+  context 'doing more shit in restaurants' do
 
     before do
       @kfc = Restaurant.create(name: 'KFC')
     end
 
-    it 'lets a user view a restaurant' do
-      visit '/restaurants'
+    it 'view a restaurant' do
+      visit restaurants_path
       click_link 'KFC'
       expect(page).to have_content 'KFC'
       expect(current_path).to eq "/restaurants/#{@kfc.id}"
