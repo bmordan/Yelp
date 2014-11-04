@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>YelpClone</title>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -10,10 +9,17 @@
 </head>
 <body>
 <header>
+  <section>
+    <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Sign up", new_user_registration_path %>
+    <% end %>
+  </section>
   <h1>Rate a Restaurant</h1>
-  <% if flash[:notice] %>
-    <h1><%= flash[:notice] %></h1>
-  <% end %>
+  <% if flash[:notice] %><h1><%= flash[:notice] %></h1><% end %>
+  <% if flash[:alert] %><h1><%= flash[:alert] %></h1><% end %>
 </header>
 <main><%= yield %></main>
 
