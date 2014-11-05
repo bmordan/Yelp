@@ -65,4 +65,15 @@ describe 'restaurants' do
     end
 
   end
+
+  # context 'a user creates restaurants' do
+  #   it 'has a user id'
+  #     visit '/'
+  #     _signin
+  #     click_link 'Add a restaurant'
+  #     fill_in 'Name', with: 'KFC'
+  #     click_button 'Create Restaurant'
+  #     expect().to 
+  #   end
+  # end
 end

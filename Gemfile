@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rspec-rails', group: :test
 gem 'capybara', group: :test
 gem 'launchy', group: :test
+gem 'warden', group: :test
+gem 'database_cleaner', group: :test
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
