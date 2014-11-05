@@ -45,6 +45,21 @@ describe 'reviews' do
     end
   end
 
+  context 'UX' do
+    it 'displays an average rating for all reviews' do
+      login_as @user
+      leave_review('So so', "3")
+      leave_review('Great', "5")
+      expect(page).to have_content("Average rating: ★★★★☆")
+    end
+
+    it "displays an average rating for all reviews" do
+      leave_review("so so", "3")
+      leave_review("Great!", "5")
+      expect(page).to have_content("Average rating: ★★★★☆")
+    end
+
+  end
   # context 'a user can only leave one review. no matter how much they loved it' do
   #   it 'cant add two reviews' do
   #      visit restaurants_path

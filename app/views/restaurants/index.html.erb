@@ -2,7 +2,10 @@
 <ul>
   <% @restaurants.each do |restaurant| %>
   <li>
-    <h2><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></h2>
+    <h2>
+      <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %> 
+      <%= restaurant.average_rating.to_i %>
+    </h2>
     
     
     <% if current_user == restaurant.user %>
@@ -28,7 +31,7 @@
       </ul>  
     <% end %>
     
-  </li>  
+  </li>
   <% end %>
 </ul>  
 <% else %>

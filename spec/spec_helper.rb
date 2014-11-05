@@ -67,8 +67,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-
-
 end
 
 def _signin
@@ -86,5 +84,13 @@ def _leave_review
   click_link 'Review KFC'
   fill_in 'Thoughts', with: 'its ok'
   select '3', from: 'Rating'
+  click_button 'Leave review'
+end
+
+def leave_review(thoughts, rating)
+  visit '/restaurants'
+  click_link 'Review KFC'
+  fill_in "Thoughts", with: thoughts
+  select rating, from: 'Rating'
   click_button 'Leave review'
 end
