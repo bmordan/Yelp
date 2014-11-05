@@ -13,8 +13,11 @@ class ReviewsController < ApplicationController
     redirect_to restaurants_path
   end
 
-  def destory
-    puts "BBOOOOOOOM ! over"
+  def destroy
+    @review = Review.find(params[:review])
+    @review.destroy
+    flash[:notice] = 'Review deleted'
+    redirect_to restaurants_path
   end
 
 end

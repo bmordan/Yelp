@@ -22,6 +22,17 @@ describe 'reviews' do
     expect(page).to have_css('a#delete-review')
   end
 
+  it 'logged in users can delete their reviews' do
+    visit restaurants_path
+    login_as @user
+    click_link 'Review KFC'
+    fill_in 'Thoughts', with: 'its ok'
+    select '3', from: 'Rating'
+    click_button 'Leave review'
+    click_link 'delete-review'
+    expect(page).not_to have_css('a#delete-review')
+  end  
+
   context 'an invalid restaurant' do
     it 'does not let you submit a name that is too short' do
       visit restaurants_path

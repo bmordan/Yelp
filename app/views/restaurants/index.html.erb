@@ -19,7 +19,7 @@
         <% restaurant.reviews.each do |review|%>
           <% if current_user == review.user %>
             <li><%= "#{review.thoughts} #{review.rating}" %>
-            <h2><%= link_to content_tag(:i, nil, :class => "fa fa-trash"), restaurant_reviews_path(restaurant), method: :delete, id: 'delete-review' %></h2>
+            <h2><%= link_to content_tag(:i, nil, :class => "fa fa-trash"), restaurant_reviews_path(restaurant,review: review), method: :delete, id: 'delete-review' %></h2>
             </li>
           <% else %>
             <li><%= "#{review.thoughts} #{review.rating}" %></li>
