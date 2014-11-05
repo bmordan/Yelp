@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe 'reviews' do
   before do
+    @bob = User.create(email: 'bob@zoo.net', password: 'password', password_confirmation: 'password')
     @user = User.create(email: 'sue@zoo.net', password: 'password', password_confirmation: 'password')
     @restaurant = @user.restaurants.create(name: 'KFC')
   end
@@ -46,16 +47,22 @@ describe 'reviews' do
   end
 
   context 'UX' do
+
     it 'displays an average rating for all reviews' do
       login_as @user
       leave_review('So so', "3")
+      logout
+      login_as @bob
       leave_review('Great', "5")
       expect(page).to have_content("Average rating: ★★★★☆")
     end
 
-    it "displays an average rating for all reviews" do
-      leave_review("so so", "3")
-      leave_review("Great!", "5")
+    it 'displays an average rating for all reviews' do
+      login_as @user
+      leave_review('So so', "3")
+      logout
+      login_as @bob
+      leave_review('Great', "5")
       expect(page).to have_content("Average rating: ★★★★☆")
     end
 

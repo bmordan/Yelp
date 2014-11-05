@@ -4,7 +4,7 @@
   <li>
     <h2>
       <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %> 
-      <%= restaurant.average_rating.to_i %>
+      Average rating: <%= star_rating(restaurant.average_rating) %>
     </h2>
     
     

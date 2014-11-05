@@ -18,8 +18,8 @@
     <% end %>
   </section>
   <h1>Rate a Restaurant</h1>
-  <% if flash[:notice] %><h1><%= flash[:notice] %></h1><% end %>
-  <% if flash[:alert] %><h1><%= flash[:alert] %></h1><% end %>
+  <% if flash[:notice] %><h1 class="flash"><%= flash[:notice] %></h1><% end %>
+  <% if flash[:alert] %><h1 class="flash"><%= flash[:alert] %></h1><% end %>
 </header>
 <main><%= yield %></main>
 </body>
