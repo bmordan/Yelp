@@ -3,15 +3,27 @@
   <% @restaurants.each do |restaurant| %>
   <li>
     <h2><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></h2>
-    <h2><%= link_to content_tag(:i, nil, :class => "fa fa-pencil"), edit_restaurant_path(restaurant) %></h2>
-    <h2><%= link_to 'edit', edit_restaurant_path(restaurant) %></h2>
-    <h2><%= link_to 'delete', restaurant_path(restaurant), method: :delete %></h2>
-    <h2><%= link_to "Review #{restaurant.name}", new_restaurant_reviews_path(restaurant) %></h2>
     
+    
+    <% if current_user == restaurant.user %>
+
+      <h2><%= link_to content_tag(:i, nil, :class => "fa fa-pencil"), edit_restaurant_path(restaurant), :id => 'edit-restaurant' %></h2>
+      <h2 ><%= link_to content_tag(:i, nil, :class => "fa fa-trash"), restaurant_path(restaurant), method: :delete, id: 'delete-restaurant' %></h2>
+    
+    <% end %>
+
+    <h2><%= link_to "Review #{restaurant.name}", new_restaurant_reviews_path(restaurant) %></h2>
+
     <% if restaurant.reviews.any? %>
       <ul> 
         <% restaurant.reviews.each do |review|%>
-        <li><%= review.thoughts %> <%= review.rating %></li>
+          <% if current_user == review.user %>
+            <li><%= "#{review.thoughts} #{review.rating}" %>
+            <h2><%= link_to content_tag(:i, nil, :class => "fa fa-trash"), restaurant_reviews_path(restaurant), method: :delete, id: 'delete-review' %></h2>
+            </li>
+          <% else %>
+            <li><%= "#{review.thoughts} #{review.rating}" %></li>
+          <% end %>
         <% end %>
       </ul>  
     <% end %>

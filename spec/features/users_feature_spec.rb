@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'devise gives users' do
 
-  context "user not signed in and on the homepage" do
+  context "what users CAN and CANNOT do" do
 
     before do
       @paul = User.create(email: 'paul@gmail.com',password: 'password',password_confirmation: 'password')
@@ -27,11 +27,23 @@ describe 'devise gives users' do
       expect(page).to have_content('No. Naughty')
     end
 
-    # it 'cant edit another users restaurant' do
-    #   visit '/'
-    #   login_as @paul
-    #   expect(page).not_to have_link('edit')
-    # end
+    it 'cant edit another users restaurant' do
+      visit '/'
+      login_as @paul
+      expect(page).not_to have_link('edit')
+    end
+
+    it 'cant delete another users restaurant' do
+      visit '/'
+      login_as @paul
+      expect(page).not_to have_link('delete')
+    end
+
+    it 'you cant review if you aint logged in' do
+      visit '/'
+      click_link 'Review Nandos'
+      expect(page).to have_content('No. Naughty')
+    end
   
   end
 

@@ -79,3 +79,12 @@ def _signin
   fill_in('Password confirmation', with: 'testtest')
   click_button('Sign up')
 end
+
+def _leave_review
+  visit restaurants_path
+  _signin
+  click_link 'Review KFC'
+  fill_in 'Thoughts', with: 'its ok'
+  select '3', from: 'Rating'
+  click_button 'Leave review'
+end

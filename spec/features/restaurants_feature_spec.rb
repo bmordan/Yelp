@@ -12,7 +12,9 @@ describe 'restaurants' do
   context 'restaurants have been added' do
     
     before do
-      Restaurant.create(:name => 'KFC')
+      @button = User.create(email: 'Button@gmail.com',password: 'password', password_confirmation: 'password')
+      login_as @button
+      @button.restaurants.create(:name => 'KFC')
     end
   
     it 'should display restaurants' do
@@ -23,7 +25,7 @@ describe 'restaurants' do
 
     it 'promts user to fill out a form, then displays the new restaurant' do
       visit restaurants_path
-      _signin
+      login_as @button
       click_link 'Add a restaurant'
       fill_in 'Name', with: 'Nandos'
       click_button 'Create Restaurant'
@@ -33,9 +35,8 @@ describe 'restaurants' do
 
     it 'whoops edit a restaurant' do
       visit restaurants_path
-      _signin
-      click_link 'edit'
-      #find(".fa-pencil").click
+      login_as @button
+      click_link 'edit-restaurant'
       fill_in 'Name', with: 'Kentucky Fried Chicken'
       click_button 'Update Restaurant'
       expect(page).to have_content 'Kentucky Fried Chicken'
@@ -44,8 +45,8 @@ describe 'restaurants' do
 
     it 'remove that restaurant' do
       visit restaurants_path
-      _signin
-      click_link 'delete'
+      login_as @button
+      click_link 'delete-restaurant'
       expect(page).not_to have_content 'KFC'
       expect(page).to have_content 'deleted sucessfully'
     end 
