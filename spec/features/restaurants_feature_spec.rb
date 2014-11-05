@@ -23,6 +23,7 @@ describe 'restaurants' do
 
     it 'promts user to fill out a form, then displays the new restaurant' do
       visit restaurants_path
+      _signin
       click_link 'Add a restaurant'
       fill_in 'Name', with: 'Nandos'
       click_button 'Create Restaurant'
@@ -32,6 +33,7 @@ describe 'restaurants' do
 
     it 'whoops edit a restaurant' do
       visit restaurants_path
+      _signin
       click_link 'edit'
       #find(".fa-pencil").click
       fill_in 'Name', with: 'Kentucky Fried Chicken'
@@ -42,6 +44,7 @@ describe 'restaurants' do
 
     it 'remove that restaurant' do
       visit restaurants_path
+      _signin
       click_link 'delete'
       expect(page).not_to have_content 'KFC'
       expect(page).to have_content 'deleted sucessfully'

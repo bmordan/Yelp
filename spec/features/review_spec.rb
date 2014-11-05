@@ -7,6 +7,7 @@ describe 'reviews' do
 
   it 'allows users to leave a rude comment' do
     visit restaurants_path
+    _signin
     click_link 'Review KFC'
     fill_in 'Thoughts', with: 'its ok'
     select '3', from: 'Rating'
@@ -19,6 +20,7 @@ describe 'reviews' do
   context 'an invalid restaurant' do
     it 'does not let you submit a name that is too short' do
       visit restaurants_path
+      _signin
       click_link 'Add a restaurant'
       fill_in 'Name', with: 'kf'
       click_button 'Create Restaurant'
