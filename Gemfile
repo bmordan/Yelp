@@ -26,6 +26,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 gem 'devise'
 
+gem 'rails_12factor'
+
 gem 'paperclip'
 
 gem 'aws-sdk'

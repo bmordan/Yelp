@@ -14,7 +14,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
-  config.omniauth :facebook, Rails.application.secrets.app_key , Rails.application.secrets.app_secret
+  # config.omniauth :facebook, Rails.application.secrets.app_key , Rails.application.secrets.app_secret
 
   config.secret_key = ENV["SECRET_KEY_BASE"]
 
