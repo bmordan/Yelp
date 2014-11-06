@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rspec-rails', group: :test
-gem 'capybara', group: :test
-gem 'launchy', group: :test
-gem 'warden', group: :test
-gem 'database_cleaner', group: :test
-
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'warden'
+  gem 'database_cleaner'
+  gem 'poltergeist'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
