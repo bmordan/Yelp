@@ -15,7 +15,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
 
-  config.secret_key = ENV["SECRET_KEY_BASE"]
+  config.secret_key_base = ENV["SECRET_KEY_BASE"]
   config.app_key = ENV["APP_KEY"]
   config.app_secret = ENV["APP_SECRET"]
 
