@@ -9,24 +9,31 @@
     
     
     <% if current_user == restaurant.user %>
-
       <h2><%= link_to content_tag(:i, nil, :class => "fa fa-pencil"), edit_restaurant_path(restaurant), :id => 'edit-restaurant' %></h2>
       <h2 ><%= link_to content_tag(:i, nil, :class => "fa fa-trash"), restaurant_path(restaurant), method: :delete, id: 'delete-restaurant' %></h2>
-    
     <% end %>
 
-    <h2><%= link_to "Review #{restaurant.name}", new_restaurant_reviews_path(restaurant) %></h2>
+    <h2><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %></h2>
 
     <% if restaurant.reviews.any? %>
       <ul> 
         <% restaurant.reviews.each do |review|%>
-          <% if current_user == review.user %>
-            <li><%= "#{review.thoughts} #{review.rating}" %>
-            <h2><%= link_to content_tag(:i, nil, :class => "fa fa-trash"), restaurant_reviews_path(restaurant,review: review), method: :delete, id: 'delete-review' %></h2>
-            </li>
-          <% else %>
-            <li><%= "#{review.thoughts} #{review.rating}" %></li>
-          <% end %>
+          <li>
+
+            <% if current_user == review.user %>
+              <p><%= "#{review.thoughts} #{review.rating}" %></p>
+              <h2><%= link_to content_tag(:i, nil, :class => "fa fa-trash"), review_path(review), method: :delete, id: 'delete-review' %></h2>
+            <% else %>
+              <%= "#{review.thoughts} #{review.rating}" %>
+            <% end %>
+
+            <p>
+              <a><%= review.endorsements.count %></a>
+              <a>endorsements</a>
+              <%= link_to content_tag(:i, nil, :class => "fa fa-thumbs-o-up fa-2x"), '#', id: "endorsement-up-#{restaurant.name}" %>
+              <%= link_to content_tag(:i, nil, :class => "fa fa-thumbs-o-down fa-2x"), '#', id: "endorsement-down-#{restaurant.name}" %>
+            </p>
+          </li>
         <% end %>
       </ul>  
     <% end %>
