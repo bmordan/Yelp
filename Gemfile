@@ -25,6 +25,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 
 gem 'paperclip'
+
+gem 'aws-sdk'
 # add awesome font icon library
 gem 'font-awesome-rails'
 # Use jquery as the JavaScript library
