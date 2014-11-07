@@ -5,6 +5,9 @@ main section figure{
   width:34%;
   display: inline-block;
 }
+main section figure a{
+  width:100%;
+}
 main section artical {
   display: inline-block;
   vertical-align: top;
@@ -24,7 +27,7 @@ main section artical ul li{
   margin: 0% 3% 0% 0%;
 }
 main form input#restaurant_image{
-  width: 9%;
+  width: 8%;
 }
 main form input[type=submit]{
   font-size: 1em;
