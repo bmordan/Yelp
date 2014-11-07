@@ -6,7 +6,10 @@ main section figure{
   display: inline-block;
 }
 main section figure a{
-  width:100%;
+  display: block;
+}
+main section figure a img{
+  width: 100%;
 }
 main section artical {
   display: inline-block;

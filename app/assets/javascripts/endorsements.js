@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('main ul li ul li p a .fa-thumbs-o-up').on('click', function(event){
+  $('main section section artical a .fa-thumbs-o-up').on('click', function(event){
       
     event.preventDefault();
     var href = $(this).parent().get(0).href

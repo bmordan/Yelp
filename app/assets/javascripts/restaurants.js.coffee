@@ -9,5 +9,5 @@ $(document).on 'ready page:load', ->
     $('main').hide()
 
     setTimeout ->
-      $('main').show('slow')
+      $('main').show('fast')
     ,200
