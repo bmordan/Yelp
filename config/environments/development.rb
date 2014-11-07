@@ -37,9 +37,9 @@ Rails.application.configure do
 
   AWS::S3::DEFAULT_HOST = "s3-eu-west-1.amazonaws.com"
 
-Paperclip.interpolates(:s3_eu_url) do |att, style|
-    "#{att.s3_protocol}://s3-eu-west-1.amazonaws.com/#{att.bucket_name}/#{att.path(style)}"
-end
+  Paperclip.interpolates(:s3_eu_url) do |att, style|
+      "#{att.s3_protocol}://s3-eu-west-1.amazonaws.com/#{att.bucket_name}/#{att.path(style)}"
+  end
 
   config.paperclip_defaults = {
   :storage => :s3,
