@@ -18,7 +18,7 @@
 
     <h2><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %></h2>
 
-    <%= render 'reviews' %>
+    <%= render 'reviews', restaurant:restaurant %>
     
   </li>
   <% end %>
