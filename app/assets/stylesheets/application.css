@@ -22,7 +22,7 @@ body{
   padding: 3%;
 }
 header{
-  background-image: url('/assets/sushi.jpg');
+  background-image: asset-url('sushi.jpg', image);
   height: 15em;
   padding:2em;
 }
