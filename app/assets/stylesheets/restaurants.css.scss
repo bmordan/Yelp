@@ -1,18 +1,37 @@
 // Place all the styles related to the restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-li{
-  display: block;
-  margin: 0% 0% 3% 0%;
+main section figure{
+  width:34%;
+  display: inline-block;
 }
-h2{
+main section artical {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0% 0% 0% 3%;
+  width: 55%;
+}
+main section artical cite{
+  font-size: 500%;
+}
+main section artical ul{
+  display: inline-block;
+  width: 100%;
+}
+main section artical ul li{
+  font-size: 129%;
   display: inline-block;
   margin: 0% 3% 0% 0%;
 }
-main ul li ul li p{
-  width:26%;
-  margin: 0% 0% 0% 66%;
+main form input#restaurant_image{
+  width: 9%;
 }
-main ul li ul li p a{
-  margin: 0% 0% 0% 2%;
+main form input[type=submit]{
+  font-size: 1em;
+  padding: 1.2%;
+  border-radius: 5px;
+  display: block;
+  margin: 3% 0% 0% 0%;
+  background-color: rgba(0,0,0,0.8);
+  color: rgba(255,255,255,0.8);
 }

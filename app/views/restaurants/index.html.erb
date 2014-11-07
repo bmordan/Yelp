@@ -1,29 +1,26 @@
 <% if @restaurants.any? %>
-<ul>
-  <% @restaurants.each do |restaurant| %>
-  <li>
+<% @restaurants.each do |restaurant| %>
+  <section>
+    <figure><%= link_to image_tag(restaurant.image.url(:thumb)), restaurant_path(restaurant) %></figure>
     <artical>
-      <%= image_tag restaurant.image.url(:thumb) %>
+      <cite><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %><hr /></cite>
+      <ul>
+        <li>Average rating: <%= star_rating(restaurant.average_rating) %></li>
+        <% if current_user == restaurant.user %>
+          <li><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %></li>
+          <li><%= link_to content_tag(:i, nil, :class => "fa fa-pencil"), edit_restaurant_path(restaurant), :id => 'edit-restaurant' %></li>
+          <li><%= link_to content_tag(:i, nil, :class => "fa fa-trash"), restaurant_path(restaurant), method: :delete, id: 'delete-restaurant' %></li>        
+        <% end %>
+      </ul>
     </artical>
-
-    <h2>
-      <%= link_to "#{restaurant.name}", restaurant_path(restaurant) %> 
-      Average rating: <%= star_rating(restaurant.average_rating) %>
-    </h2>
-    
-    <% if current_user == restaurant.user %>
-      <h2><%= link_to content_tag(:i, nil, :class => "fa fa-pencil"), edit_restaurant_path(restaurant), :id => 'edit-restaurant' %></h2>
-      <h2 ><%= link_to content_tag(:i, nil, :class => "fa fa-trash"), restaurant_path(restaurant), method: :delete, id: 'delete-restaurant' %></h2>
-    <% end %>
-
-    <h2><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %></h2>
-
-    <%= render 'reviews', restaurant:restaurant %>
-    
-  </li>
+  </section>
+  <section><%= render 'reviews', restaurant:restaurant %></section> 
   <% end %>
-</ul>  
+  
 <% else %>
-  No restaurants
+  <section><cite>No restaurants</cite></section>
 <% end %>
-<a href="/restaurants/new">Add a restaurant</a>
+<section><a href="/restaurants/new">Add a restaurant</a></section>
+
+
+

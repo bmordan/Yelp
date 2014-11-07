@@ -34,12 +34,24 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  AWS::S3::DEFAULT_HOST = "s3-eu-west-1.amazonaws.com"
+
+Paperclip.interpolates(:s3_eu_url) do |att, style|
+    "#{att.s3_protocol}://s3-eu-west-1.amazonaws.com/#{att.bucket_name}/#{att.path(style)}"
+end
+
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
     :bucket => ENV['S3_BUCKET_NAME'],
     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    }
+    },
+    :s3_protocol => "https",
+    :path => ":class/:id/:basename_:style.:extension",
+    :bucket => "bmordanyelpclone",
+    :url  => ":s3_eu_url"
   }
+
 end
